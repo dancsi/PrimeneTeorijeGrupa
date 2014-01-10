@@ -6,6 +6,15 @@
 \input{glyphtounicode}
 \pdfgentounicode=1
 
+\usepackage{amsthm, amsmath, amssymb, amsfonts}
+\usepackage{float, subcaption}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}
+\newtheorem{cor}{Posledica}
+\theoremstyle{definition}
+\newtheorem{defn}{Definicija}
+
 \begin{document}
 
 \title{Primene Teorije Grupa}
@@ -14,34 +23,122 @@
 
 \maketitle
 
-% Ispis stranice s napomenom o umetanju izvornika rada. Uklonite naredbu \izvornik ako želite izbaciti tu stranicu.
-%\izvornik
-
-% Dodavanje zahvale ili prazne stranice. Ako ne želite dodati zahvalu, naredbu ostavite radi prazne stranice.
 \zahvala{}
 
 \tableofcontents
 
 \chapter{Motivacija, grupe i simetrije}
-Symmetry registers regularity, and thus, records beauty.
-A symmetry of an object or a figure in space is a transformation in space that maps the object to itself.
-Sto vise simetrija, to je objekat simetricniji, dakle, lepsi.
+U svakodnevnom \v zivotu se \v cesto de\v sava da se susre\'cemo sa predmetima za koje ka\v zemo da su ''simetri\v cni''. \v Sta je zapravo simetrija? Na primer, mo\v zemo re\'ci da je neki objekat simetri\v can ako ''izgleda isto'' kad ga gledamo sa razli\v citih ta\v caka gledi\v sta.\\
+Formalnije, simetrija nekog objekta je neka transformacija u prostoru koja preslikava taj objekat na njega samog. Vremenom, ljudi su primetili da sve ovakve transformacije imaju jo\v s neka svojstva, karakteristi\v cna za sve transformacije:
+\begin{enumerate}
+  \item Transformacije simetrije su bijektive, tj. za svaku transformaciju postoji inverzna transformacija koja ''poni\v stava'' njen efekat, i dovodi objekat u po\v cetno stanje. Na primer, u slu\v caju rotacije za ugao $\varphi$ oko neke ose, inverzna transformacija je rotacija za ugao $-\varphi$, odnosno $2\pi-\varphi$ oko iste te ose. Neke transformacije, poput osne simetrije mogu biti i same sebi inverzne.
+  \item Kombinovanjem (kompozicijom) dve transformacije tako\dj e dobijamo transformaciju. Na primer, kompozicija dve rotacije (sa zajedno\v ckom osom rotacije) je opet rotacija, kompozicija dve simetrije mo\v ze biti translacija ili rotacija, ...
+  \item Svaki objekat ima jednu (trivijalnu) simetriju, identi\v cko preslikavanje, koje slika svaku ta\v cku u nju samu.
+\end{enumerate}
+Kasnije \'cemo videti da skup transformacija (i uop\v ste bilo kakvih apstraktnih matemati\v ckih objekata) sa ovakvim svojstvima \v cini \emph{grupu} (grupu transformacija u ovom slu\v caju).
 \section{Simetrije ravanskih figura}
-Trougao, kvadrat, sestougao.
-Frieze, kao primer beskonacne grupe. 7 frieze grupa
-Wallpaper groups, 2 primera, jedan je manje simetrican, generisan samo sa 2 translacije, i jedan koji je vise simetrican.
+Za po\v cetak, krenimo od nekih jednostavnijih figura, pravilnih mnogouglova. Opet, od njih je najjednostavniji (jednakostrani\v cni) trougao.\\
+\begin{figure}[h]
+\centering
+\includegraphics{placeholder}
+\caption{Simetrije jednakostrani\v cnog trougla}
+\end{figure}\\
+Kao \v sto vidimo, postoji 6 transformacija simetrije: \begin{itemize}
+                                                         \item Rotacije oko centra trougla: $r$ (za $\pi/3$), $r\circ r = r^2$ (za $2\pi/3$) i $r\circ r \circ r = r^3 = e$ (za $2\pi$, odnosno $0$ radijana - identi\v cko preslikavanje)
+                                                         \item Osne simetrije $s_1$, $s_2$ i $s_3$ u odnosu na prave $\ell_1$, $\ell_2$, $\ell_3$. Primetimo da opet va\v zi $s_i \circ s_i = s_i^2 = e$, za $i\in \lbrace 1, 2, 3 \rbrace$, ali i $s_1 s_2 = r^2$,...
+                                                       \end{itemize}
+Sli\v cno se de\v sava i kod kvadrata i pravilnog \v sestougla, samo sa vi\v se osa simetrije i ve\'cim stepenom rotacione simetrije:\\
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+~
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+\caption{Simetrije kvadrata i pravouglog \v sestougla}
+\end{figure}\\
+Sa druge strane, postoje i primeri kod kojih se javlja i translaciona simetrija. Jasno je da to moraju biti beskona\v cni crte\v zi kod kojih se jedan ili vi\v se osnovnih elementata ponavljaju po jednoj (frieze) ili dve dimenzije (wallpaper). Interesantno je da se obe vrste ovakvih crte\v za mogu potpuno klasifikovati u zavisnosti od simetrija koje poseduju. Tako imamo 7 frieze-grupa i 17 wallpaper-grupa transformacija.
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+~
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+\caption{Primeri frieze crte\v za}
+\end{figure}\\
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+~
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\end{subfigure}
+\caption{Primeri wallpaper-a}
+\end{figure}
+
 \section{Simetrije trodimenzionalnih tela}
-Kocka, ikosaedar
-Simetrije kristala/molekula, 2 primera
+U tri dimenzije, dobro su poznate simetrije pravilnih poliedara (tetraedra, kocke, oktaedra i ikosaedra), ali su zna\v cajne i grupe simetrija molekula i kristala (kristalografske grupe), koje se tako\dj e mogu kompletno klasifikovati, kao u dvodimenzionalnom slu\v caju.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\caption{Molekul}
+\end{subfigure}
+~
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\caption{Molekul}
+\end{subfigure}
+~
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{placeholder}
+\caption{Kristalna re\v setka}
+\end{subfigure}
+\end{figure}
+
 \section{Simetrije u fizici}
-Simetrije u klasicnoj i kvantnoj mehanici, npr lorencova grupa i resenja sredingerove jednacine za vodonikov atom. Lijeve grupe.
+%Simetrije u klasicnoj i kvantnoj mehanici, npr lorencova grupa i resenja sredingerove jednacine za vodonikov atom. Lijeve grupe.
+Kona\v cno, simetrije na\v seg prostora (Poincar\'e-ova i Lorentz-ova grupa u specijalnoj teoriji relativnosti) proizilaze iz svih kvantnih teorija polja, dok je sam Standardni Model (najprihva\'cenija takva teorija) baziran na unutra\v snjim simetrijama grupe $SU(3)\times SU(2)\times U(1)$ (kasnije \'ce biti biti obja\v snjeno \v sta to zna\v ci).
 
 \chapter{Uvod u teoriju grupa}
 \section{Osnovne definicije}
-Definicija grupe, red grupe, red elementa, podgrupe.
-Primeri: brojevi (sta jeste i sta nije), transofrmacije, simetrije
+%Definicija grupe, red grupe, red elementa, podgrupe.
+Kao \v sto je ve\'c bilo re\v ceno, elementi neke grupe ne moraju nu\v zno da budu transformacije, ve\'c elementi proizvoljnog skupa $G$, za koje smo definisali operaciju ''mno\v zenja'' (formalno: operaciju grupe) koja zadovoljava slede\'ce osobine:
+\begin{enumerate}
+  \item Ako $a$ i $b$ pripadaju $G$, onda i njihov proizvod, $ab$ pripada $G$
+  \item Operacija mno\v zenja je asocijativna, odnosno va\v zi $a(bc) = (ab)c$
+  \item $G$ sadr\v zi \emph{jedini\v cni element} $e$, za koji va\v zi $ae = ea = a$, za svako $a\in G$
+  \item Za svako $a\in G$ postoji $b\in G$, za koje va\v zi $ab = ba = e$. Takav $b$ se zove \emph{inverzni element} za $a$, i obele\v zava se sa $b^{-1}$
+\end{enumerate}
+Iako operaciju grupe \v cesto nazivamo ''mno\v zenjem'', ona zapravo i mo\v ze a i ne mora to da bude:
+\begin{itemize}
+  \item Skup racionalnih (ili realnih) brojeva bez $0$ \v cini grupu u odnosu na mno\v zenje (u uobi\v cajenom smislu )
+  \item Skup celih (ali ne i prirodnih!) brojeva \v cini grupu u odnosu na sabiranje
+  \item Skup svih invertibilnih (njihova determinanta je razli\v cita od $0$) kvadratnih matrica dimenzija $n\times n$ \v cini grupu, a operacija grupe je mno\v zenje matrica
+\end{itemize}
+Ali, \v cak i u ovim primerima nismo pri\v cali o apstraktim grupama, nego o njihovim konkretnim primerima, realizacijama. Struktura neke apstraktne grupe je zadata isklju\v civo definisanjem operacije mno\v zenja svakog ure\dj enog para elemenata, bilo nabrajanjem ili na neki drugi na\v cin, ali bez pozivanja na ''prirodu'' tih elemenata.\\
+Primetimo da operacija mno\v zenja ne mora biti komutativna (npr kod mno\v zenja matrica), ali ako jeste, odnosno ako za svako $a, b\in G$ va\v zi $ab = ba$, onda je grupa $G$ komutativna ili \emph{Abelova}.\\
+Broj elemenata u grupi naziva se \emph{red grupe}.\\
+Ako odabereno neki element $a$ grupe $G$, mo\v zemo ga pomno\v ziti sa samim sobom i dobiti proizvod $aa$, koji \'cemo obele\v zavati sa $a^2$. U op\v stem slu\v caju, proizvod $\underbrace{aa...a}_{n\text{ puta}}$ obele\v zavamo sa $a^n$. Sli\v cno, mo\v zemo definisati i negativne stepene $a$:
+$$a^{-n} = (a^{-1})^n = (a^n)^{-1}$$
+Ako su svi stepeni $a$ razli\v citi, ka\v zemo da je $a$ \emph{beskona\v cnog reda}. Inace, ispisivanjem stepena $a$, nai\'ci \'cemo na dva prirodna broja $r$ i $s$, $r>s$, za koje va\v zi
+$$a^r = a^s.$$
+Mno\v zenjem obe strane jednakosti sa $a^{-s}$, dobijamo
+$$a^{r-s} = a^0 = e, r-s>0.$$
+Neka je $n$ najmanji broj za koji je $a^n = e$, $n>0$. Tada je $n$ \emph{red elementa $a$}.
+
+Primeri: brojevi (sta jeste i sta nije), transformacije, simetrije
 Klasifikacija grupa sa 2, 3, 4 elementa, primer da 1 grupa moze imati vise od 1 realizacije, izomorfizam
-\section{Simetri\v{c} cna grupa $S_n$, permutacije}
+\section{Simetri\v{c}na grupa $S_n$, permutacije}
 Definicija permutacije, ciklusi, parnost.
 Definicija simetricne grupe
 cayleyeva teorema
@@ -65,11 +162,47 @@ SU(N, C) - specijalna unitarna grupa
 O(N, C) - ortogonalna grupa
 SO(N, C) - specijalna ortogonalna
 \section{Dvodimenzionalne ta\v{c}kaste kristalografske grupe}
-\section{Lorencova grupa}
-U(p, q) - pseudo-unitarna grupa
-O(p, q) - pseoudo-ortogonalna grupa
-O(1, 3) - Lorencova grupa
+\begin{defn}[Mre\v za]
+\v Sta je mre\v za...
+\end{defn}
+\begin{defn}
+Grupa $G\subseteq O(n, \mathbb{R})$ u odnosu na koju je mre\v za reda $n$ invarijantna se zove \emph{kristalografska ta\v ckasta grupa}, ako
+\end{defn}
 
+\begin{thm}
+Svaka kristalografska ta\v ckasta grupa je kona\v cna
+\end{thm}
+\begin{proof}
+Dokaza\'cemo ovu teoremu u dve dimenzije: Jednostavnom proverom dobijamo da se svaka izometrija koja \v cuva neku ta\v cku $O$ mo\v ze predstaviti kao rotacija oko ta\v cke $O$, osna simetrija u odnosu na neku pravu koja prolazi kroz $O$, ili kao kompozicija neke takve rotacije i osne simetrije. Jasno je da je dovoljno pokazati da imamo kona\v cno mnogo rotacija, jer dodavanjem osnih simetrija u (kona\v cnu) grupu $C_n$, reda $n$, dobijamo tako\dj e kona\v cnu grupu $D_n$, reda $2n$.\\
+Dakle, pretpostavimo suprotno, da je grupa $G$ kristalografska ta\v ckasta grupa u sve dimenzije, i sadr\v zi beskona\v cno mnogo rotacija. Po\v sto je svaka rotacija odre\dj ena sa jednim realnim brojem iz $[0,2\pi)$, za svako $\epsilon>0$ po Dirihleovom principu mo\v zemo na\'ci $f, g\in G$, takve da je $f\neq g$ i $|f-g|\leq\epsilon$. Bez umanjenja op\v stosti, pretpostavimo da je $f>g$. Po\v sto je $G$ grupa, i $f-g$ pripada $G$, odnosno $G$ sadr\v zi rotaciju za proizvoljno mali ugao. To je kontradikcija sa diskretno\v s\'cu mre\v ze koju o\v cuvava data grupa $G$ (jer dobijamo da mo\v zemo na\'ci proizvoljno bliske ta\v cke u toj mre\v zi).
+\end{proof}
+\begin{cor}
+U dve dimenzije ta\v ckaste kristalografske grupe mogu biti samo oblika $C_n$ i $D_n$, za $n\in\mathbb{N}$
+\end{cor}
+
+\begin{thm}
+Za datu kristalografsku grupu $G$, koja \v cuva re\v setku u $\mathbb{R}^2$ ili $\mathbb{R}^3$, njena podgrupa rotacija $H$ mo\v ze biti isklju\v civo reda 1, 2, 3, 4, ili 6.
+\end{thm}
+\begin{proof}
+Direktnom konstrukcijom dobijamo da postoje re\v setke u dve i tri dimenzije, koje su invarijantne pri svakoj od rotacija za $2\pi/n$, za $n\in{1, 2, 3, 4, 6}$. Ostaje da se poka\v ze da je $n\neq 5$ i $n\leq 6$.\\
+Uo\v cimo neku ta\v cku $A$ te re\v setke, i posmatrajmo njena rastojanja od svihostalih ta\v caka te re\v setke. Po\v sto je re\v setka diskretna, postoji ta\v cka $B$, koja je najbli\v za  ta\v cki $A$, na udaljenosti $d = |AB|$.\\
+U slu\v caju da je $n>6$, posmatramo trougao $\triangle ABC$, pri \v cemu je $C$ ta\v cka re\v setke nastala rotiranjem ta\v cke $B$ oko $A$, za ugao $\varphi = 2\pi/n$. Po kosinusnoj teoremi, $|BC|^2 = 2 d^2-2 d^2 \cos\varphi$, odnosno $|BC| = d\sqrt{2(1-\cos\varphi)}$. Za $n=6$ dobijamo da je $|BC| = d$, a za sve ostale $n>6$ va\v zi da je $\cos(2\pi/n)>\frac12$, odnosno $|BC|<d$, \v sto je kontradikcija sa minimalno\v s\'cu $d$.\\
+Dakle, ostaje slu\v caj $n=5$. Tada uo\v cimo pravilni petougao stranice $d$ \v cija su temena na re\v setci. Zbog osobina grupe $G$ i re\v setke, ivice tog petougla mo\v zemo preslo\v ziti u petokraku zvezdu, tako da njena temena i dalje budu na re\v setci. Naravno, temena te zvezde su i dalje temena nekog pravilnog petougla, ali sa manjom stranicom $d'<\frac d 2$. Ovaj postupak mo\v zemo ponavljati proizvoljan broj puta, i tako dobiti ta\v cke te re\v setke na proizvoljno maloj udaljenosti, \v sto je kontradikcija sa diskretno\v s\'cu re\v setke.
+\end{proof}
+\section{Lorencova grupa}
+
+
+Postoji jedan interesantan homomorfizam izme\dj u $SL(2, \mathbb{C})$ i Lorencove grupe $L$, grupe svih linearnih transformacija vektorskog prostora $\mathbb{R}^4$ koje \v cuvaju Lorencovu metriku
+$$|x|:=x_0^2-x_1^2-x_2^2-x_3^2.$$
+Svakom vektoru $x\in\mathbb{R}^4$ pridru\v zimo jednu $2\times 2$ matricu $\psi(x)$, na slede\'ci na\v cin:
+$$\psi(x) = \begin{pmatrix}
+                x_0+x_3 & x_1-ix_2 \\
+                x_1+ix_2 & x_0-x_3
+            \end{pmatrix}, $$
+tako da va\v zi $|x| = det(\psi(x))$. Tada, preslikavanje $\varphi: SL(2, \mathbb{C}) \rightarrow L$, dato sa $\varphi(A)(x) = \psi^{-1}(A\psi(x)A^*)$ je homomorfizam, pri \v cemu se matrica $A*$ dobija transponovanjem matrice $A$ i konjugovanjem svih njenih elemenata. I zaista, $\psi$ je linearni izomorfizam iz $\mathbb{R}^4$ u
+$$\psi(\mathbb{R}^4) = \left\lbrace\left. \begin{pmatrix} x & y \\ z&u \end{pmatrix}\right|x, y, z, u\in \mathbb{C} \text{ i } \overline x = x, \overline y = z, \overline u = u \right\rbrace$$
+Mo\v ze se proveriti da je ovaj prostor invarijantan pod $M\rightarrow AMA^*$, za svako $A\in GL(2, \mathbb{C})$. Tako\dj e, za $A\in SL(2, \mathbb{C})$, $\varphi(A)$ \v cuva metriku, zbog multiplikativnih svojstava determinante:
+$$|\varphi(A)(x)| = \det(\psi(\varphi(A)(x))) = \det(A\psi(x)A^*) = \det(A)\det(\psi(x))\det(A^*) = \det(\psi(x)) = |x|$$
 \chapter{Zaključak}
 Zaključak.
 
