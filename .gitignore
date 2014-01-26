@@ -220,3 +220,5 @@ pip-log.txt
 *.synctex
 *.toc
 *.tex.sav
+*.bbl
+*.blg
