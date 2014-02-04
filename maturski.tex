@@ -1,7 +1,6 @@
 \documentclass{report}
 \usepackage[a4paper]{geometry}
 
-
 \usepackage{graphicx} \graphicspath{ {./figures/} }
 \usepackage{booktabs}
 \usepackage{amsthm, amsmath, amssymb, amsfonts}
@@ -19,6 +18,11 @@
 \setotherlanguage{english}
 \setmainfont{Times New Roman}
 
+\usepackage{fancyhdr}
+\fancyhead[L]{Примена теорије група}
+\fancyhead[R]{Даниел Силађи, IV-9}
+%\fancyfoot[C]{\thepage}
+
 \theoremstyle{plain}
 \newtheorem{thm}{Теорема}
 \newtheorem*{lem}{Лема}
@@ -30,39 +34,31 @@
 
 
 \begin{document}
-
+\pagestyle{fancy}
 
 \begin{titlepage}
 \begin{center}
-
-\textsc{\LARGE гимназија Јован Јовановић Змај}\\[1.5cm]
-
-\textsc{\Large Матурски рад}\\[0.5cm]
-
-% Title
-\HRule \\[0.4cm]
-{ \huge \bfseries Примене теорије група \\[0.4cm] }
-
-\HRule \\[1.5cm]
-
-% Author and supervisor
-\begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Аутор:}\\
-Даниел \textsc{Силађи}
+\Large\textbf{Гимназија ,,Јован Јовановић Змај''}\\
+\Large Нови Сад\\[8.7cm]
+\LARGE\bfseries Матурски рад из Анализе са алгебром\\[3mm]
+\LARGE\bfseries ПРИМЕНА ТЕОРИЈЕ ГРУПА\\
+\end{center}
+\vfill
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft}
+\Large Професор ментор:\\
+\Large др Петар Ђапић
 \end{flushleft}
 \end{minipage}
-\begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
-\emph{Ментор:} \\
-Др Петар \textsc{Ђапић}
+\begin{minipage}{0.5\textwidth}
+\begin{flushright}
+\Large Ученик:\\
+\Large Даниел Силађи IV-9
 \end{flushright}
 \end{minipage}
-
-\vfill
-
-{\large \today}
-
+\vspace{0.5mm}
+\begin{center}
+\Large Нови Сад, фебруар 2014. год.
 \end{center}
 \end{titlepage}
 
@@ -769,5 +765,34 @@ $$SO(1, 3)^+\cong SL(2, \mathbb{C})/\mathbb{Z}_2.$$
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{literatura}
+
+\newpage
+\noindent Датум предај матурског рада: $\underline{\hspace{4cm}}$\\[1.5cm]
+Комисија:\\[2mm]
+\hspace*{1cm}Председник\hspace{5mm}$\underline{\hspace{4cm}}$\\[2mm]
+\hspace*{1cm}Испитивач\hspace{6.7mm}$\underline{\hspace{4cm}}$\\[2mm]
+\hspace*{1cm}Члан\hspace{18.3mm}$\underline{\hspace{4cm}}$\\[1cm]
+\begin{minipage}{0.2\linewidth}
+\vspace{-7cm}
+Коментар:
+\end{minipage}
+\begin{minipage}{0.8\linewidth}
+\vspace{4mm}
+\hspace{-1.2cm}
+\fbox{
+\begin{minipage}{5in}
+\hfill\vspace{3in}
+\end{minipage}}
+\end{minipage}\\[1cm]
+\begin{minipage}{0.5\linewidth}
+\begin{flushleft}
+Датум одбране: $\underline{\hspace{4cm}}$
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{flushright}
+Оцена: $\underline{\hspace{3cm}}$ ($\underline{\hspace{0.4cm}}$)
+\end{flushright}
+\end{minipage}
 
 \end{document}
