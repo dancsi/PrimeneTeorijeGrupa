@@ -225,3 +225,5 @@ pip-log.txt
 *.out
 Daniel - maturski (1).pdf
 Daniel-maturski-druga verzija.pdf
+*.nav
+*.snm
